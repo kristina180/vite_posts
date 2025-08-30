@@ -1,5 +1,11 @@
-export default function Header() {
+import styles from "./Header.module.css";
+import ThemeSwitcher from "../../features/ThemeSwitcher/ui/ThemeSwitcher";
+
+export default function Header({ theme }: { theme: "light" | "dark" }) {
   return (
-    <header style={{ padding: "1rem", backgroundColor: "#eee" }}>Header</header>
+    <header className={`${styles.section} ${styles[theme]}`}>
+      <p>Header</p>
+      <ThemeSwitcher />
+    </header>
   );
 }

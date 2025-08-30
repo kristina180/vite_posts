@@ -1,17 +1,25 @@
 import Header from "../../widgets/LayoutHeader/Header";
 import Footer from "../../widgets/LayoutFooter/Footer";
 import React from "react";
+import { useTheme } from "../lib/theme/ThemeContext";
+
+import styles from "./MainLayout.module.css";
 
 interface Props {
   children: React.ReactNode;
+  onOpenModal: () => void;
 }
 
-const MainLayout: React.FC<Props> = ({ children }) => (
-  <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-    <Header />
-    <main style={{ flex: 1 }}>{children}</main>
-    <Footer />
-  </div>
-);
+const MainLayout: React.FC<Props> = ({ children, onOpenModal }) => {
+  const { theme } = useTheme();
+
+  return (
+    <div className={`${styles.container} ${styles[theme]}`}>
+      <Header theme={theme} />
+      <main className={styles.main}>{children}</main>
+      <Footer onOpenModal={onOpenModal} theme={theme} />
+    </div>
+  );
+};
 
 export default MainLayout;

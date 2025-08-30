@@ -1,0 +1,14 @@
+.button {
+  width: 12%;
+  height: 20px;
+  font-size: 0.8vw;
+  border-radius: 4px;
+  padding: 4px 10px;
+  border: 1px solid rgb(87, 87, 87);
+  overflow: none;
+}
+
+.button.dark {
+  background-color: rgb(167, 167, 167);
+  border: none;
+}
