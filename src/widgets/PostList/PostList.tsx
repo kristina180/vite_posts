@@ -1,4 +1,4 @@
-import PostCard from "../../entities/post/ui/PostCard";
+import { PostCard } from "../../entities/post/ui/PostCard";
 
 interface Post {
   id: number;
@@ -10,7 +10,7 @@ interface Props {
   posts: Post[];
 }
 
-export default function PostList({ posts }: Props) {
+export function PostList({ posts }: Props) {
   return (
     <section>
       {posts.map((post) => (

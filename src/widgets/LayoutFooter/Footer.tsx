@@ -1,5 +1,5 @@
-export default function Footer() {
-  return (
-    <footer style={{ padding: "1rem", backgroundColor: "#eee" }}>Footer</footer>
-  );
+import styles from "./Footer.module.css";
+
+export function Footer() {
+  return <footer className={styles.footer}>Footer</footer>;
 }
