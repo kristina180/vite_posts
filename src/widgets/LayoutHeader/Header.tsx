@@ -1,5 +1,5 @@
-export default function Header() {
-  return (
-    <header style={{ padding: "1rem", backgroundColor: "#eee" }}>Header</header>
-  );
+import styles from "./Header.module.css";
+
+export function Header() {
+  return <header className={styles.header}>Header</header>;
 }
