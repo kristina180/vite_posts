@@ -1,5 +1,13 @@
-export default function Header() {
+import styles from "./Header.module.css";
+import { ThemeSwitcher } from "../../features/ThemeSwitcher/ui/ThemeSwitcher";
+import type { Theme } from "../../shared/lib/theme/ThemeContext";
+import type { FC } from "react";
+
+export const Header: FC<{ theme: Theme }> = ({ theme }) => {
   return (
-    <header style={{ padding: "1rem", backgroundColor: "#eee" }}>Header</header>
+    <header className={`${styles.section} ${styles[theme]}`}>
+      <p>Header</p>
+      <ThemeSwitcher />
+    </header>
   );
-}
+};

@@ -1,21 +1,30 @@
-import PostCard from "../../entities/post/ui/PostCard";
+import React, { useMemo } from "react";
+import { PostCard } from "../../entities/post/ui/PostCard";
+import type { FC } from "react";
+import { withLoading } from "../../shared/lib/hoc/WithLoading";
+import styles from "./PostList.module.css";
 
-interface Post {
+export interface IPost {
   id: number;
   title: string;
   content: string;
 }
 
 interface Props {
-  posts: Post[];
+  posts: IPost[];
 }
 
-export default function PostList({ posts }: Props) {
-  return (
-    <section>
-      {posts.map((post) => (
-        <PostCard key={post.id} title={post.title} content={post.content} />
-      ))}
-    </section>
+export const PostList: FC<Props> = ({ posts }) => {
+  const value = useMemo(
+    () =>
+      posts.map((post) => (
+        <React.Fragment key={post.id}>
+          <PostCard title={post.title} content={post.content} />
+        </React.Fragment>
+      )),
+    [posts]
   );
-}
+  return <section className={styles.section}>{value}</section>;
+};
+
+export const PostListWithLoading = withLoading(PostList);
