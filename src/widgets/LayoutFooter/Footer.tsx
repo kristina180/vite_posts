@@ -1,13 +1,13 @@
 import styles from "./Footer.module.css";
-import Button from "../../shared/ui/Button/Button";
+import type { FC } from "react";
+import { Button } from "../../shared/ui/Button/Button";
 
-export default function Footer({
-  onOpenModal,
-  theme,
-}: {
+interface IProps {
   onOpenModal: () => void;
   theme: "light" | "dark";
-}) {
+}
+
+export const Footer: FC<IProps> = ({ onOpenModal, theme }) => {
   return (
     <footer className={`${styles.section} ${styles[theme]}`}>
       <Button onOpenModal={onOpenModal} theme={theme}>
@@ -15,4 +15,4 @@ export default function Footer({
       </Button>
     </footer>
   );
-}
+};

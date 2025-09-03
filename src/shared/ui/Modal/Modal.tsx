@@ -1,14 +1,16 @@
 import { createPortal } from "react-dom";
+import type { FC } from "react";
 import styles from "./Modal.module.css";
-import { useTheme } from "../../lib/theme/ThemeContext";
+import { useTheme } from "../../lib/theme/UseTheme";
 
-const Modal = ({
-  isOpen,
-  onClose,
-}: {
+const modalRoot = document.getElementById("modal-root")!;
+
+interface IProps {
   isOpen: boolean;
   onClose: () => void;
-}) => {
+}
+
+export const Modal: FC<IProps> = ({ isOpen, onClose }) => {
   const { theme } = useTheme();
   if (!isOpen) return null;
 
@@ -20,8 +22,6 @@ const Modal = ({
         <button onClick={onClose}>Close</button>
       </div>
     </div>,
-    document.body
+    modalRoot
   );
 };
-
-export default Modal;

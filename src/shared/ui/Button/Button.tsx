@@ -1,5 +1,5 @@
 import styles from "./Button.module.css";
-
+import type { FC } from "react";
 import React from "react";
 
 interface ButtonProps {
@@ -8,12 +8,10 @@ interface ButtonProps {
   theme: "light" | "dark";
 }
 
-const Button = ({ onOpenModal, theme, children }: ButtonProps) => {
+export const Button: FC<ButtonProps> = ({ onOpenModal, theme, children }) => {
   return (
     <button onClick={onOpenModal} className={styles[theme]}>
       {children}
     </button>
   );
 };
-
-export default Button;
