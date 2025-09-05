@@ -1,0 +1,30 @@
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0px;
+  border: 1px solid rgb(195, 195, 195);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.tabs a,
+.tabs:visited {
+  color: black;
+}
+
+.tabs a {
+  cursor: pointer;
+}
+
+.tabs a:active,
+.tabs.tabs.dark a:active {
+  color: rgb(68, 68, 68);
+}
+
+.tabs.dark a {
+  color: white;
+}
+
+.tabs .active {
+  color: rgb(181, 181, 181);
+}

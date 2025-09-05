@@ -5,19 +5,22 @@ import { useTheme } from "../lib/theme/UseTheme";
 
 import styles from "./MainLayout.module.css";
 
+import { Outlet } from "react-router-dom";
+
 interface Props {
-  children: React.ReactNode;
-  onOpenModal: () => void;
+  children?: React.ReactNode;
 }
 
-export const MainLayout: React.FC<Props> = ({ children, onOpenModal }) => {
+export const MainLayout: React.FC<Props> = () => {
   const { theme } = useTheme();
 
   return (
     <div className={`${styles.container} ${styles[theme]}`}>
       <Header theme={theme} />
-      <main className={styles.main}>{children}</main>
-      <Footer onOpenModal={onOpenModal} theme={theme} />
+      <main className={styles.main}>
+        <Outlet />
+      </main>
+      <Footer theme={theme} />
     </div>
   );
 };
