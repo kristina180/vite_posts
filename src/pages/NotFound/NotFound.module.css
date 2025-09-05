@@ -1,0 +1,19 @@
+.section {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.section h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.sectionp {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.section a {
+  color: #007bff;
+  text-decoration: underline;
+}

@@ -1,0 +1,30 @@
+.section {
+  width: 220px;
+  margin-bottom: 10px;
+}
+
+.section select {
+  padding: 4px;
+  width: 220px;
+  border-radius: 6px;
+  border: 1px solid rgb(87, 87, 87);
+  font-size: 16px;
+}
+
+.section.dark select {
+  background-color: #4d4d4d;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.section select:hover {
+  cursor: pointer;
+  outline: none;
+}
+
+.section.dark select:focus,
+.section.dark select:hover {
+  border: none;
+  outline: none;
+}
