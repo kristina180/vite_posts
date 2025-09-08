@@ -1,6 +1,7 @@
 import "./App.css";
 import { MainLayout } from "../shared/layouts/MainLayout";
 import { PostList } from "../widgets/PostList/PostList";
+
 import { Modal } from "../shared/ui/Modal/Modal";
 import { ThemeProvider } from "../shared/lib/theme/ThemeProvider";
 import { useState, type FC } from "react";
@@ -16,6 +17,7 @@ const App: FC = () => {
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </MainLayout>
     </ThemeProvider>
+
   );
 };
 

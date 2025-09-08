@@ -1,6 +1,8 @@
+
 import React from "react";
 import { PostCard } from "../../entities/post/ui/PostCard";
 import type { FC } from "react";
+
 
 interface Post {
   id: number;

@@ -1,3 +1,4 @@
+
 import styles from "./Header.module.css";
 import { ThemeSwitcher } from "../../features/ThemeSwitcher/ui/ThemeSwitcher";
 import type { Theme } from "../../shared/lib/theme/ThemeContext";
@@ -14,4 +15,5 @@ export const Header: FC<IProps> = ({ theme }) => {
       <ThemeSwitcher />
     </header>
   );
+
 };

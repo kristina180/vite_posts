@@ -1,7 +1,9 @@
 import { Header } from "../../widgets/LayoutHeader/Header";
 import { Footer } from "../../widgets/LayoutFooter/Footer";
 import React from "react";
+
 import { useTheme } from "../lib/theme/UseTheme";
+
 
 import styles from "./MainLayout.module.css";
 
@@ -9,6 +11,7 @@ interface Props {
   children: React.ReactNode;
   onOpenModal: () => void;
 }
+
 
 export const MainLayout: React.FC<Props> = ({ children, onOpenModal }) => {
   const { theme } = useTheme();
@@ -21,3 +24,4 @@ export const MainLayout: React.FC<Props> = ({ children, onOpenModal }) => {
     </div>
   );
 };
+
