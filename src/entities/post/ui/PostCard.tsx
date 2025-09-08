@@ -5,7 +5,7 @@ interface Props {
   content: string;
 }
 
-export const PostCard: FC<Props> = ({ title, content }: Props) => {
+export const PostCard: FC<Props> = ({ title, content }) => {
   return (
     <article>
       <h2>{title}</h2>

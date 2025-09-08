@@ -14,12 +14,16 @@ export const Modal: FC<IProps> = ({ isOpen, onClose }) => {
   const { theme } = useTheme();
   if (!isOpen) return null;
 
+  function handleClick() {
+    onClose();
+  }
+
   return createPortal(
     <div className={`${styles.modalStyles} ${styles[theme]}`}>
       <div className={`${styles.modalContentStyles} ${styles[theme]}`}>
         <h2>О проекте</h2>
         <p>Это веб-сервис с постами</p>
-        <button onClick={onClose}>Close</button>
+        <button onClick={handleClick}>Close</button>
       </div>
     </div>,
     modalRoot

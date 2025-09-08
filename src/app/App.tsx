@@ -3,10 +3,10 @@ import { MainLayout } from "../shared/layouts/MainLayout";
 import { PostList } from "../widgets/PostList/PostList";
 import { Modal } from "../shared/ui/Modal/Modal";
 import { ThemeProvider } from "../shared/lib/theme/ThemeProvider";
-import { useState } from "react";
+import { useState, type FC } from "react";
 import { MOCK_POSTS } from "../shared/mocks/constants";
 
-function App() {
+const App: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -17,6 +17,6 @@ function App() {
       </MainLayout>
     </ThemeProvider>
   );
-}
+};
 
 export default App;
