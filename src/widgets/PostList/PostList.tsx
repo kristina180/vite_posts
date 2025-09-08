@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import { PostCard } from "../../entities/post/ui/PostCard";
 
 interface Post {
@@ -10,7 +11,7 @@ interface Props {
   posts: Post[];
 }
 
-export function PostList({ posts }: Props) {
+export const PostList: FC<Props> = ({ posts }) => {
   return (
     <section>
       {posts.map((post) => (
@@ -18,4 +19,4 @@ export function PostList({ posts }: Props) {
       ))}
     </section>
   );
-}
+};
