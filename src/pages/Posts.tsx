@@ -4,14 +4,15 @@ import { PostLengthFilter } from "../features/PostLengthFilter/ui/PostLengthFilt
 import { usePosts } from "../features/PostList/model/hooks/usePost";
 
 export const Posts = () => {
-  const [filteredPosts, setFilterPosts] = useState<IPost[]>([]);
+  const { filteredPostsById } = usePosts();
+  const [filteredPostsValue, setFilterPosts] =
+    useState<IPost[]>(filteredPostsById);
 
-  const { posts } = usePosts();
   return (
     <div>
-      <PostLengthFilter posts={posts} onFilter={setFilterPosts} />
-      {filteredPosts.length > 0 ? (
-        <PostListWithLoading isLoading={false} posts={filteredPosts} />
+      <PostLengthFilter posts={filteredPostsValue} onFilter={setFilterPosts} />
+      {filteredPostsValue.length > 0 ? (
+        <PostListWithLoading isLoading={false} posts={filteredPostsValue} />
       ) : (
         <div>Нет постов</div>
       )}

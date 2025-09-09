@@ -1,4 +1,6 @@
-export const MOCK_POSTS = [
+import type { IPost } from "../../widgets/PostList/PostList";
+
+export const MOCK_POSTS: IPost[] = [
   {
     id: 1,
     title: "CSS",
@@ -8,20 +10,44 @@ export const MOCK_POSTS = [
 CSS is among the core languages of the open web and is standardized across Web browsers according to W3C specifications. Previously, the development of various parts of CSS specification was done synchronously, which allowed the versioning of the latest recommendations. You might have heard about CSS1, CSS2.1, or even CSS3. There will never be a CSS3 or a CSS4; rather, everything is now just "CSS" with individual CSS modules having version numbers.
 
 After CSS 2.1, the scope of the specification increased significantly and the progress on different CSS modules started to differ so much, that it became more effective to develop and release recommendations separately per module. Instead of versioning the CSS specification, W3C now periodically takes a snapshot of the latest stable state of the CSS specification and individual modules progress. CSS modules now have version numbers, or levels, such as CSS Color Module Level 5.`,
+    comments: [1, 9],
   },
-  { id: 2, title: "Второй пост", content: "Контент второго поста" },
-  { id: 3, title: "Третий пост", content: "Контент третьего поста" },
+  {
+    id: 2,
+    title: "Второй пост",
+    content: "Контент второго поста",
+    comments: [2, 3],
+  },
+  {
+    id: 3,
+    title: "Третий пост",
+    content: "Контент третьего поста",
+    comments: [7, 8],
+  },
   {
     id: 4,
     title: "Четвёртый пост с описанием",
     content: "Контент четвертого поста",
+    comments: [4, 5],
   },
-  { id: 5, title: "Пятый пост тест", content: "Контент пятого поста" },
+  {
+    id: 5,
+    title: "Пятый пост тест",
+    content: "Контент пятого поста",
+    comments: [6],
+  },
 ];
 
 export const COMMENT_LIST = [
   { id: 1, author: "Первый автор", text: "Хорошая статья!" },
   { id: 2, author: "Второй автор", text: "Полезная информация." },
+  { id: 3, author: "Третий автор", text: "Нравится!" },
+  { id: 4, author: "Четертый автор", text: "Окак." },
+  { id: 5, author: "Первый автор", text: "Пишите больше." },
+  { id: 6, author: "Второй автор", text: "Лайк репост." },
+  { id: 7, author: "Третий автор", text: "Хороший пост." },
+  { id: 8, author: "Четвертый автор", text: "Подписался." },
+  { id: 9, author: "Пятый автор", text: "Отписка." },
 ];
 
 export interface IUser {

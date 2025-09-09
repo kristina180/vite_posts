@@ -7,26 +7,13 @@ import styles from "./UserPosts.module.css";
 
 export const UserPosts = () => {
   const userData = useOutletContext<IUser>();
-  const { posts } = usePosts();
+  const { filteredPostsById } = usePosts(userData.posts_id);
 
   return (
     <div className={styles.section}>
-      {userData.posts_id.map((id) => {
-        const cur_post = posts.find((elem) => elem.id == id);
-        return (
-          <>
-            {cur_post ? (
-              <PostCard
-                id={id}
-                title={cur_post.title}
-                content={cur_post.content}
-              />
-            ) : (
-              <div>Пост не найден</div>
-            )}
-          </>
-        );
-      })}
+      {filteredPostsById.map((elem) => (
+        <PostCard post={elem} />
+      ))}
     </div>
   );
 };

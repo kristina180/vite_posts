@@ -4,14 +4,17 @@ import { COMMENT_LIST } from "../../../shared/mocks/constants";
 import styles from "./PostCard.module.css";
 import { useTheme } from "../../../shared/lib/theme/UseTheme";
 import { Link } from "react-router-dom";
+import type { IPost } from "../../../widgets/PostList/PostList";
 
 interface Props {
-  id?: number;
-  title: string;
-  content: string;
+  post: IPost;
 }
 
-export const PostCard: FC<Props> = ({ id, title, content }: Props) => {
+export const PostCard: FC<Props> = ({ post }) => {
+  const { id, title, content, comments } = post;
+  const comments_list = COMMENT_LIST.filter((elem) =>
+    comments.includes(elem.id)
+  );
   const { theme } = useTheme();
   return (
     <article className={`${styles.section} ${styles[theme]}`}>
@@ -23,7 +26,7 @@ export const PostCard: FC<Props> = ({ id, title, content }: Props) => {
         <h2>{title}</h2>
       )}
       <div>{content}</div>
-      <CommentList comments={COMMENT_LIST} />
+      <CommentList comments={comments_list} />
     </article>
   );
 };

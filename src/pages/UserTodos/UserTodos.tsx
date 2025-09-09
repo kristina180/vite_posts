@@ -6,10 +6,10 @@ export const UserTodos = () => {
   const userData = useOutletContext<IUser>();
 
   return (
-    <div className={styles.section}>
+    <ul className={styles.section}>
       {userData.todos.map((todo) => (
         <li key={`todo${todo.id}`}>{todo.text}</li>
       ))}
-    </div>
+    </ul>
   );
 };

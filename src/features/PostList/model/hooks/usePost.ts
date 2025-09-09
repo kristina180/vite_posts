@@ -1,9 +1,11 @@
-import { useState } from "react";
-import type { IPost } from "../../../../widgets/PostList/PostList";
+import { useMemo } from "react";
 import { MOCK_POSTS } from "../../../../shared/mocks/constants";
 
-export const usePosts = () => {
-  const [posts, setPosts] = useState<IPost[]>(MOCK_POSTS);
+export const usePosts = (posts_id?: number[]) => {
+  const filteredPostsById = useMemo(() => {
+    if (!posts_id) return MOCK_POSTS;
+    return MOCK_POSTS.filter((elem) => posts_id.includes(elem.id));
+  }, [posts_id]);
 
-  return { posts, setPosts };
+  return { filteredPostsById };
 };
