@@ -1,4 +1,20 @@
-.header {
+
+.section {
   padding: 1rem;
+
+  height: 2vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section.light {
   background-color: #eee;
+  color: black;
+}
+
+.section.dark {
+  background-color: #4d4d4d;
+  color: white;
+
 }

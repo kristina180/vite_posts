@@ -1,0 +1,10 @@
+.dark {
+  background-color: rgb(167, 167, 167);
+  border: none;
+}
+
+.light,
+.dark {
+  border-radius: 4px;
+  border: 1px solid rgb(87, 87, 87);
+}

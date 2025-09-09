@@ -1,5 +1,8 @@
-import type { FC } from "react";
+
+import React from "react";
 import { PostCard } from "../../entities/post/ui/PostCard";
+import type { FC } from "react";
+
 
 interface Post {
   id: number;
@@ -15,7 +18,9 @@ export const PostList: FC<Props> = ({ posts }) => {
   return (
     <section>
       {posts.map((post) => (
-        <PostCard key={post.id} title={post.title} content={post.content} />
+        <React.Fragment key={post.id}>
+          <PostCard key={post.id} title={post.title} content={post.content} />
+        </React.Fragment>
       ))}
     </section>
   );
