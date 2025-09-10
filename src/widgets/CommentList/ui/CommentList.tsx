@@ -14,13 +14,13 @@ interface Props {
 export const CommentList: FC<Props> = ({ comments }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleOpen = useCallback(() => {
+  const handleToggleOpen = useCallback(() => {
     setIsOpen((prev) => !prev);
   }, []);
 
   return (
     <section className={styles.section}>
-      <button onClick={toggleOpen}>
+      <button onClick={handleToggleOpen}>
         {isOpen ? "Скрыть комментарии" : "Показать комментарии"}
       </button>
 

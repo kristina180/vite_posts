@@ -9,8 +9,11 @@ interface ButtonProps {
 }
 
 export const Button: FC<ButtonProps> = ({ onOpenModal, theme, children }) => {
+  function handleClick() {
+    onOpenModal();
+  }
   return (
-    <button onClick={onOpenModal} className={styles[theme]}>
+    <button onClick={handleClick} className={styles[theme]}>
       {children}
     </button>
   );
