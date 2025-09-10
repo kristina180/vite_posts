@@ -6,9 +6,13 @@ import { Sun, Moon } from "lucide-react";
 export const ThemeSwitcher: FC = () => {
   const { theme, toggleTheme } = useTheme();
 
+  function handleClick() {
+    toggleTheme();
+  }
+
   return (
     <button
-      onClick={toggleTheme}
+      onClick={handleClick}
       className={`${styles.button} ${styles[theme]}`}
     >
       {theme === "light" ? (

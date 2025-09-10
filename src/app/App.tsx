@@ -7,23 +7,38 @@ import { useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./providers/router/Router";
 
-function App() {
+const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function handleClick(value: boolean) {
+    setIsModalOpen(value);
+  }
 
   return (
     <ThemeProvider>
+<<<<<<< HEAD
       <ModalProvider onOpenModal={() => setIsModalOpen(true)}>
         <RouterProvider router={router} />
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+=======
+      <MainLayout onOpenModal={() => handleClick(true)}>
+        <PostLengthFilter posts={MOCK_POSTS} onFilter={setFilterPosts} />
+        {filteredPosts.length > 0 ? (
+          <PostListWithLoading isLoading={false} posts={filteredPosts} />
+        ) : (
+          <div>Нет постов</div>
+        )}
+        <Modal isOpen={isModalOpen} onClose={() => handleClick(false)}>
+>>>>>>> homework-3
           <Modal.Header>О проекте</Modal.Header>
           <Modal.Body>Это веб-сервис с постами</Modal.Body>
           <Modal.Footer>
-            <button onClick={() => setIsModalOpen(false)}>Закрыть</button>
+            <button onClick={() => handleClick(false)}>Закрыть</button>
           </Modal.Footer>
         </Modal>
       </ModalProvider>
     </ThemeProvider>
   );
-}
+};
 
 export default App;
