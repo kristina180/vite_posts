@@ -10,44 +10,39 @@ export const MOCK_POSTS: IPost[] = [
 CSS is among the core languages of the open web and is standardized across Web browsers according to W3C specifications. Previously, the development of various parts of CSS specification was done synchronously, which allowed the versioning of the latest recommendations. You might have heard about CSS1, CSS2.1, or even CSS3. There will never be a CSS3 or a CSS4; rather, everything is now just "CSS" with individual CSS modules having version numbers.
 
 After CSS 2.1, the scope of the specification increased significantly and the progress on different CSS modules started to differ so much, that it became more effective to develop and release recommendations separately per module. Instead of versioning the CSS specification, W3C now periodically takes a snapshot of the latest stable state of the CSS specification and individual modules progress. CSS modules now have version numbers, or levels, such as CSS Color Module Level 5.`,
-    comments: [1, 9],
   },
   {
     id: 2,
     title: "Второй пост",
     content: "Контент второго поста",
-    comments: [2, 3],
   },
   {
     id: 3,
     title: "Третий пост",
     content: "Контент третьего поста",
-    comments: [7, 8],
   },
   {
     id: 4,
     title: "Четвёртый пост с описанием",
     content: "Контент четвертого поста",
-    comments: [4, 5],
   },
   {
     id: 5,
     title: "Пятый пост тест",
     content: "Контент пятого поста",
-    comments: [6],
   },
 ];
 
 export const COMMENT_LIST = [
-  { id: 1, author: "Первый автор", text: "Хорошая статья!" },
-  { id: 2, author: "Второй автор", text: "Полезная информация." },
-  { id: 3, author: "Третий автор", text: "Нравится!" },
-  { id: 4, author: "Четертый автор", text: "Окак." },
-  { id: 5, author: "Первый автор", text: "Пишите больше." },
-  { id: 6, author: "Второй автор", text: "Лайк репост." },
-  { id: 7, author: "Третий автор", text: "Хороший пост." },
-  { id: 8, author: "Четвертый автор", text: "Подписался." },
-  { id: 9, author: "Пятый автор", text: "Отписка." },
+  { id: 1, userId: 1, text: "Хорошая статья!", postId: 1 },
+  { id: 2, userId: 2, text: "Полезная информация.", postId: 2 },
+  { id: 3, userId: 3, text: "Нравится!", postId: 2 },
+  { id: 4, userId: 1, text: "Окак.", postId: 5 },
+  { id: 5, userId: 2, text: "Пишите больше.", postId: 4 },
+  { id: 6, userId: 3, text: "Лайк репост.", postId: 4 },
+  { id: 7, userId: 1, text: "Хороший пост.", postId: 3 },
+  { id: 8, userId: 2, text: "Подписался.", postId: 3 },
+  { id: 9, userId: 3, text: "Отписка.", postId: 5 },
 ];
 
 export interface IUser {

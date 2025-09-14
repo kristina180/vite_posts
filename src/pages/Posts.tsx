@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { PostListWithLoading, type IPost } from "../widgets/PostList/PostList";
+import { type IPost } from "../widgets/PostList/PostList";
+import { PostListWithLoading } from "../widgets/PostListWithLoading/PostListWithLoading";
 import { PostLengthFilter } from "../features/PostLengthFilter/ui/PostLengthFilter";
 import { usePosts } from "../features/PostList/model/hooks/usePost";
 

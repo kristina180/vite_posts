@@ -11,11 +11,10 @@ interface Props {
 }
 
 export const PostCard: FC<Props> = ({ post }) => {
-  const { id, title, content, comments } = post;
-  const comments_list = COMMENT_LIST.filter((elem) =>
-    comments.includes(elem.id)
-  );
+  const { id, title, content } = post;
+
   const { theme } = useTheme();
+  const comments = COMMENT_LIST.filter((elem) => elem.postId == id);
   return (
     <article className={`${styles.section} ${styles[theme]}`}>
       {id ? (
@@ -26,7 +25,7 @@ export const PostCard: FC<Props> = ({ post }) => {
         <h2>{title}</h2>
       )}
       <div>{content}</div>
-      <CommentList comments={comments_list} />
+      <CommentList comments={comments} />
     </article>
   );
 };

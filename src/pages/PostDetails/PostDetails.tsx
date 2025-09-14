@@ -1,11 +1,20 @@
 import { Link, useParams } from "react-router-dom";
 import { usePosts } from "../../features/PostList/model/hooks/usePost";
 import styles from "./PostDetails.module.css";
+import { MOCK_USERS, type IUser } from "../../shared/mocks/constants";
+import type { FC } from "react";
+import type { IPost } from "../../widgets/PostList/PostList";
 
-export const PostDetails = () => {
+export const PostDetails: FC = () => {
   const { id } = useParams();
-  const { posts } = usePosts();
-  const current_post = id ? posts.find((post) => post.id == +id) : undefined;
+  const { filteredPostsById } = usePosts();
+  const current_post: IPost | undefined = id
+    ? filteredPostsById.find((post) => post.id == +id)
+    : undefined;
+
+  const current_user: IUser | undefined = MOCK_USERS.find((elem) =>
+    elem.posts_id.includes(Number(id))
+  );
 
   return (
     <div className={styles.section}>
@@ -21,7 +30,12 @@ export const PostDetails = () => {
       {current_post ? (
         <div className={styles.post_info}>
           <h2>{current_post.title}</h2>
-
+          <div className={styles.author}>
+            Автор:{" "}
+            <Link to={`/users/${current_user?.id}`}>
+              {current_user?.name + " " + current_user?.surname}
+            </Link>
+          </div>
           <div className={styles.content}>{current_post.content}</div>
         </div>
       ) : (
