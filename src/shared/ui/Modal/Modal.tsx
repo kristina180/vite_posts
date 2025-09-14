@@ -1,15 +1,13 @@
 import { createPortal } from "react-dom";
-import { createContext, useContext, type FC, type ReactNode } from "react";
+import { type FC, type ReactNode } from "react";
 import styles from "./Modal.module.css";
 import { useTheme } from "../../lib/theme/UseTheme";
+import { ModalContext } from "./ModalContext";
+import { ModalHeader } from "./ModalHeader";
+import { ModalBody } from "./ModalBody";
+import { ModalFooter } from "./ModalFooter";
 
 const modalRoot = document.getElementById("modal-root")!;
-
-interface ModalContextType {
-  onClose: () => void;
-}
-
-const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
 interface IProps {
   isOpen: boolean;
@@ -41,25 +39,6 @@ export const Modal: FC<IProps> & ICompProps = ({
     </ModalContext.Provider>,
     modalRoot
   );
-};
-
-const ModalHeader = ({ children }: { children: ReactNode }) => {
-  return (
-    <div className={styles.modalHeader}>
-      <h2>{children}</h2>
-    </div>
-  );
-};
-
-const ModalBody = ({ children }: { children: ReactNode }) => {
-  return <div className={styles.modalBody}>{children}</div>;
-};
-
-const ModalFooter = ({ children }: { children: ReactNode }) => {
-  const context = useContext(ModalContext);
-  if (!context) throw new Error("Modal.Footer must be used inside Modal");
-
-  return <div className={styles.modalFooter}>{children}</div>;
 };
 
 Modal.Header = ModalHeader;

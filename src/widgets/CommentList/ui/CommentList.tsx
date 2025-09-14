@@ -1,14 +1,16 @@
 import { useState, useCallback, type FC } from "react";
 import styles from "./CommentList.module.css";
+import { Comment } from "../../Comment/Comment";
 
-interface Comment {
+export interface IComment {
   id: number;
   author: string;
   text: string;
+  postId: number;
 }
 
 interface Props {
-  comments: Comment[];
+  comments: IComment[];
 }
 
 export const CommentList: FC<Props> = ({ comments }) => {
@@ -27,9 +29,7 @@ export const CommentList: FC<Props> = ({ comments }) => {
       {isOpen && (
         <ul className={styles.commentList}>
           {comments.map((comment) => (
-            <li key={comment.id}>
-              <strong>{comment.author}:</strong> {comment.text}
-            </li>
+            <Comment comment={comment} />
           ))}
         </ul>
       )}
