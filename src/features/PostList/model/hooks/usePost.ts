@@ -1,11 +1,32 @@
-import { useMemo } from "react";
-import { MOCK_POSTS } from "../../../../shared/mocks/constants";
+import {
+  useGetPostsByUserQuery,
+  useGetPostsQuery,
+} from "../../../../entities/posts/api/postsApi";
+import { useSelector } from "react-redux";
+import { selectAllPosts } from "../../../../entities/posts/model/slice/postSlice";
 
-export const usePosts = (posts_id?: number[]) => {
-  const filteredPostsById = useMemo(() => {
-    if (!posts_id) return MOCK_POSTS;
-    return MOCK_POSTS.filter((elem) => posts_id.includes(elem.id));
-  }, [posts_id]);
+export const usePosts = (userId?: number) => {
+  const { isLoading: isLoadingAll, isFetching: isFetchingAll } =
+    useGetPostsQuery(undefined, { skip: userId !== undefined });
 
-  return { filteredPostsById };
+  const { isLoading: isLoadingByUser, isFetching: isFetchingByUser } =
+    useGetPostsByUserQuery(userId ?? 0, {
+      skip: userId === undefined,
+    });
+
+  const allPosts = useSelector(selectAllPosts);
+
+  const filteredPosts = userId
+    ? allPosts.filter((post) => post.userId === userId)
+    : allPosts;
+
+  const isLoading = userId
+    ? isLoadingByUser || isFetchingByUser
+    : isLoadingAll || isFetchingAll;
+  console.log(isLoading);
+  return {
+    posts: filteredPosts,
+    isEmpty: filteredPosts.length === 0,
+    isLoading,
+  };
 };

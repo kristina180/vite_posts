@@ -1,14 +1,9 @@
 import { useState, useCallback, type FC } from "react";
+import { type IComment } from "../../../entities/comments/api/commentsApi";
 import styles from "./CommentList.module.css";
 
-interface Comment {
-  id: number;
-  author: string;
-  text: string;
-}
-
 interface Props {
-  comments: Comment[];
+  comments: IComment[];
 }
 
 export const CommentList: FC<Props> = ({ comments }) => {
@@ -28,7 +23,7 @@ export const CommentList: FC<Props> = ({ comments }) => {
         <ul className={styles.commentList}>
           {comments.map((comment) => (
             <li key={comment.id}>
-              <strong>{comment.author}:</strong> {comment.text}
+              <strong>{comment.name}:</strong> {comment.body}
             </li>
           ))}
         </ul>

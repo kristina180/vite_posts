@@ -1,11 +1,15 @@
 import { Link, useParams } from "react-router-dom";
-import { usePosts } from "../../features/PostList/model/hooks/usePost";
 import styles from "./PostDetails.module.css";
+import { useGetPostByIdQuery } from "../../entities/posts/api/postsApi";
+import { PostCard } from "../../entities/post/ui/PostCard";
 
 export const PostDetails = () => {
   const { id } = useParams();
-  const { posts } = usePosts();
-  const current_post = id ? posts.find((post) => post.id == +id) : undefined;
+
+  const { data: post, isError, isLoading } = useGetPostByIdQuery(+id);
+
+  if (isLoading) return <p>Загрузка поста...</p>;
+  if (isError) return <p>Ошибка при загрузке поста</p>;
 
   return (
     <div className={styles.section}>
@@ -15,14 +19,15 @@ export const PostDetails = () => {
         </div>
         <div>{"/"}</div>
         <div>
-          <Link to={`/posts/${id}`}>{current_post?.title}</Link>
+          <Link to={`/posts/${id}`}>{post?.title}</Link>
         </div>
       </div>
-      {current_post ? (
+      {post ? (
         <div className={styles.post_info}>
-          <h2>{current_post.title}</h2>
+          <PostCard post={post} />
+          {/* <h2>{post.title}</h2>
 
-          <div className={styles.content}>{current_post.content}</div>
+          <div className={styles.content}>{post.body}</div> */}
         </div>
       ) : (
         <div>Пост не найден</div>
