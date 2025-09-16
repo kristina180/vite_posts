@@ -44,3 +44,16 @@
 .author a:hover {
   color: #a1a1a1;
 }
+
+.icon {
+  margin-right: 10px;
+  color: black;
+}
+
+.icon:hover {
+  color: #a1a1a1;
+}
+
+.icon:active {
+  color: #3b3b3b;
+}

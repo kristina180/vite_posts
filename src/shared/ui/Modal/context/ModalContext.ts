@@ -1,8 +1,9 @@
 import { createContext } from "react";
 
 interface ModalContextProps {
-  onOpenModal?: () => void;
-  onClose?: () => void;
+  onOpenModal: () => void;
+  onCloseModal: () => void;
+  isOpen: boolean;
 }
 
 export const ModalContext = createContext<ModalContextProps | undefined>(
