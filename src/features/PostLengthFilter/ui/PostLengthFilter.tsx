@@ -20,11 +20,6 @@ export const PostLengthFilter: FC<IProps> = ({ posts, onFilter }) => {
     onFilter(filtered);
   }
 
-  // useEffect(() => {
-  //   const filtered = filterByLength(posts, minLength);
-  //   onFilter(filtered);
-  // }, [posts, minLength, onFilter]);
-
   return (
     <div className={`${styles.section} ${styles[theme]}`}>
       <select value={minLength} onChange={handleChange}>
