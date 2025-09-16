@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useGetPhotosByAlbumIdQuery } from "../../entities/albums/api/albumsApi";
 import styles from "./AlbumsPhotos.module.css";
+import { photoError } from "../../shared/mocks/constants";
 
 interface AlbumWithPhotosProps {
   albumId: number;
@@ -34,8 +35,11 @@ export const AlbumWithPhotos = ({
             key={photo.id}
             src={photo.url}
             alt={photo.title}
-            width={150}
-            height={150}
+            width={160}
+            height={160}
+            onError={(e) => {
+              e.currentTarget.src = photoError;
+            }}
           />
         ))}
       </div>

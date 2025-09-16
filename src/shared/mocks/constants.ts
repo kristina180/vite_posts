@@ -131,3 +131,6 @@ export const MOCK_ALBUMS = [
     ],
   },
 ];
+
+export const photoError =
+  "https://shkola6barnaul-r22.gosweb.gosuslugi.ru/netcat_files/8/168/U0WAp4LnwgM_30.jpg";

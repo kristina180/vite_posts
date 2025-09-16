@@ -9,6 +9,8 @@ import { type AppDispatch } from "../../app/providers/store/reduxStore";
 import { CommentList } from "../../widgets/CommentList/ui/CommentList";
 import { useGetCommentsByIdPostQuery } from "../../entities/comments/api/commentsApi";
 
+import { ChevronLeft } from "lucide-react";
+
 export const PostDetails: FC = () => {
   const { id } = useParams();
 
@@ -46,6 +48,10 @@ export const PostDetails: FC = () => {
   return (
     <div className={styles.section}>
       <div className={styles.linkreturn}>
+        <Link to={"/"}>
+          <ChevronLeft size={18} className={styles.icon} />
+        </Link>
+
         <div>
           <Link to={"/"}>Посты</Link>
         </div>
