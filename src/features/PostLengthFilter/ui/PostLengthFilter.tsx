@@ -1,6 +1,8 @@
 import { filterByLength } from "../lib/filterByLength";
+
 import type { IPost } from "../../../entities/posts/api/postsApi";
-import React, { useEffect, useState, type FC } from "react";
+import React, { useState, type FC } from "react";
+
 import styles from "./PostLengthFilter.module.css";
 import { useTheme } from "../../../shared/lib/theme/UseTheme";
 
@@ -16,12 +18,9 @@ export const PostLengthFilter: FC<IProps> = ({ posts, onFilter }) => {
   function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
     const value = Number(e.target.value);
     setMinLength(value);
-  }
-
-  useEffect(() => {
-    const filtered = filterByLength(posts, minLength);
+    const filtered = filterByLength(posts, value);
     onFilter(filtered);
-  }, [posts, minLength, onFilter]);
+  }
 
   return (
     <div className={`${styles.section} ${styles[theme]}`}>

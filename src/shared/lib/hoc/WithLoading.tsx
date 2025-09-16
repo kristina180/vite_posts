@@ -9,7 +9,6 @@ export function withLoading<T extends object>(
 ): FC<T & IWithLoadingProps> {
   return function WithLoadingComponent(props: T & IWithLoadingProps) {
     const { isLoading, ...restProps } = props;
-    console.log(isLoading);
 
     if (isLoading) {
       return <div>Loading...</div>;

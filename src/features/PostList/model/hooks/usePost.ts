@@ -23,7 +23,7 @@ export const usePosts = (userId?: number) => {
   const isLoading = userId
     ? isLoadingByUser || isFetchingByUser
     : isLoadingAll || isFetchingAll;
-  console.log(isLoading);
+
   return {
     posts: filteredPosts,
     isEmpty: filteredPosts.length === 0,

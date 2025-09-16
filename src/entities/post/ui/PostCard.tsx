@@ -27,8 +27,10 @@ export const PostCard: FC<Props> = ({ post }) => {
       ) : (
         <h2>{title}</h2>
       )}
+
       <div>{body}</div>
-      <CommentList comments={comments} />
+
+      <CommentList comments={comments ?? []} />
     </article>
   );
 };

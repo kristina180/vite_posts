@@ -24,6 +24,28 @@
   color: #a1a1a1;
 }
 
-.linkreturn a:active {
+.linkreturn a:active,
+.author a:active {
   color: #3b3b3b;
+}
+
+.author {
+  text-align: left;
+  margin-bottom: 10px;
+}
+.author a {
+  text-decoration-line: none;
+  color: black;
+}
+
+.author a:visited {
+  color: black;
+}
+
+.author a:hover {
+  color: #a1a1a1;
+}
+
+.content {
+  margin-bottom: 20px;
 }
