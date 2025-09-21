@@ -2,6 +2,7 @@ export const MOCK_POSTS = [
   { id: 1, title: "Первый пост", content: "Контент первого поста" },
   { id: 2, title: "Второй пост", content: "Контент второго поста" },
   { id: 3, title: "Третий пост", content: "Контент третьего поста" },
+
   {
     id: 4,
     title: "Четвёртый пост с описанием",
@@ -20,4 +21,5 @@ export const COMMENT_LIST = [
   { id: 7, author: "Третий автор", text: "Хороший пост.", postId: 2 },
   { id: 8, author: "Четвертый автор", text: "Подписался.", postId: 3 },
   { id: 9, author: "Пятый автор", text: "Отписка.", postId: 4 },
+
 ];

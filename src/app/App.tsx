@@ -1,5 +1,6 @@
 import "./App.css";
 import { MainLayout } from "../shared/layouts/MainLayout";
+
 import { ThemeProvider } from "../shared/lib/theme/ThemeProvider";
 import { useState } from "react";
 import { MOCK_POSTS } from "../shared/mocks/constants";

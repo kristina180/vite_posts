@@ -10,9 +10,11 @@ interface Props {
   content: string;
 }
 
+
 export const PostCard: FC<Props> = ({ id, title, content }: Props) => {
   const { theme } = useTheme();
   const comments = COMMENT_LIST.filter((elme) => elme.postId == id);
+
   return (
     <article className={`${styles.section} ${styles[theme]}`}>
       <h2>{title}</h2>
