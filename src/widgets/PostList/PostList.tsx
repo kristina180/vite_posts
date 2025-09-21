@@ -1,24 +1,11 @@
-<<<<<<< HEAD
-
-import React, { useMemo } from "react";
-=======
 import React from "react";
->>>>>>> homework-5
+
 import { PostCard } from "../../entities/post/ui/PostCard";
 import type { FC } from "react";
 
 import styles from "./PostList.module.css";
 
-<<<<<<< HEAD
-export interface IPost {
-
-  id: number;
-  title: string;
-  content: string;
-}
-=======
 import { type IPost } from "../../entities/posts/api/postsApi";
->>>>>>> homework-5
 
 interface Props {
   posts: IPost[];
