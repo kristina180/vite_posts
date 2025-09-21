@@ -1,5 +1,3 @@
-// import type { IPost } from "../../widgets/PostList/PostList";
-
 export const MOCK_POSTS = [
   {
     id: 1,
@@ -46,22 +44,7 @@ export const COMMENT_LIST = [
   { id: 9, userId: 3, text: "Отписка.", postId: 5 },
 ];
 
-export interface IUser {
-  id: number;
-  name: string;
-  surname: string;
-  album_id: number;
-  todos: ITodo[];
-  posts_id: number[];
-  avatar?: string;
-}
-export interface ITodo {
-  id: number;
-  text: string;
-  completed: boolean;
-}
-
-export const MOCK_USERS: IUser[] = [
+export const MOCK_USERS = [
   {
     id: 1,
     name: "Ryan",

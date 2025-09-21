@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router-dom";
-import type { IUser } from "../../shared/mocks/constants";
+import type { IUser } from "../../entities/users/model/types";
 
 import { PostCard } from "../../entities/post/ui/PostCard";
 import { usePosts } from "../../features/PostList/model/hooks/usePost";

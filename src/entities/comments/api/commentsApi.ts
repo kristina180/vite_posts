@@ -1,15 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { API_URL } from "../../utils/constantsApi";
-import type { ReactNode } from "react";
 
-export interface IComment {
-  text: ReactNode;
-  postId: number;
-  id: number;
-  name: string;
-  email: string;
-  body: string;
-}
+import type { IComment } from "../model/types";
 
 export const commentsApi = createApi({
   reducerPath: "commentsApi",

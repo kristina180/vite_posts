@@ -1,34 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-interface IUser {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
-}
-
-interface UserState {
-  user: IUser | null;
-  isLoading: boolean;
-  error: string | null;
-}
+import type { IUser, UserState } from "../types";
 
 const initialState: UserState = {
   user: null,
