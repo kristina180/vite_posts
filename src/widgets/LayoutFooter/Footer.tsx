@@ -1,6 +1,7 @@
 import styles from "./Footer.module.css";
 import type { FC } from "react";
 import { Button } from "../../shared/ui/Button/Button";
+
 import { useModal } from "../../shared/ui/Modal/context/UseModal";
 import { Modal } from "../../shared/ui/Modal/ui/Modal";
 

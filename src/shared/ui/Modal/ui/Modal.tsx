@@ -26,10 +26,24 @@ export const Modal: FC<IProps> & ICompProps = ({ children }) => {
   const { isOpen } = useModal();
   if (!isOpen) return null;
 
+  function handleClick() {
+    onClose();
+  }
+
   return createPortal(
+<<<<<<< HEAD:src/shared/ui/Modal/ui/Modal.tsx
     <div className={`${styles.modalStyles} ${styles[theme]}`}>
       <div className={`${styles.modalContentStyles} ${styles[theme]}`}>
         {children}
+=======
+
+    <ModalContext.Provider value={{ onClose }}>
+      <div className={`${styles.modalStyles} ${styles[theme]}`}>
+        <div className={`${styles.modalContentStyles} ${styles[theme]}`}>
+          {children}
+        </div>
+
+>>>>>>> 3ca15e2bdb583ee1417aae1dad4ab9692f76414a:src/shared/ui/Modal/Modal.tsx
       </div>
     </div>,
     modalRoot

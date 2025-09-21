@@ -21,6 +21,7 @@ After CSS 2.1, the scope of the specification increased significantly and the pr
     title: "Третий пост",
     content: "Контент третьего поста",
   },
+
   {
     id: 4,
     title: "Четвёртый пост с описанием",

@@ -1,6 +1,7 @@
 import { Header } from "../../widgets/LayoutHeader/Header";
 import { Footer } from "../../widgets/LayoutFooter/Footer";
 import React from "react";
+
 import { useTheme } from "../lib/theme/UseTheme";
 
 import styles from "./MainLayout.module.css";

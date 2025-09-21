@@ -15,6 +15,7 @@ export const PostCard: FC<Props> = ({ post }) => {
 
   const { theme } = useTheme();
   const comments = COMMENT_LIST.filter((elem) => elem.postId == id);
+
   return (
     <article className={`${styles.section} ${styles[theme]}`}>
       {id ? (
