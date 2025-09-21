@@ -4,7 +4,7 @@ import { Comment } from "../../Comment/Comment";
 
 export interface IComment {
   id: number;
-  author: string;
+  userId: number;
   text: string;
   postId: number;
 }

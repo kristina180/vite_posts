@@ -1,0 +1,59 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.section h2 {
+  text-align: left;
+}
+
+.content {
+  text-align: justify;
+}
+
+.linkreturn {
+  display: flex;
+  cursor: pointer;
+}
+.linkreturn,
+.linkreturn a:visited {
+  color: #a1a1a1;
+}
+
+.linkreturn a:active,
+.author a:active {
+  color: #3b3b3b;
+}
+
+.author {
+  text-align: left;
+  margin-bottom: 10px;
+}
+.author a {
+  text-decoration-line: none;
+  color: black;
+}
+
+.author a:visited {
+  color: black;
+}
+
+.author a:hover {
+  color: #a1a1a1;
+}
+
+.icon {
+  margin-right: 10px;
+  color: black;
+}
+
+.icon:hover {
+  color: #a1a1a1;
+}
+
+.icon:active {
+  color: #3b3b3b;
+}

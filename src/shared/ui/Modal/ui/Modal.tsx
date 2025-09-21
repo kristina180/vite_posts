@@ -1,17 +1,17 @@
 import { createPortal } from "react-dom";
 import { type FC, type ReactNode } from "react";
 import styles from "./Modal.module.css";
-import { useTheme } from "../../lib/theme/UseTheme";
-import { ModalContext } from "./ModalContext";
+
+import { useTheme } from "../../../lib/theme/UseTheme";
+
 import { ModalHeader } from "./ModalHeader";
 import { ModalBody } from "./ModalBody";
 import { ModalFooter } from "./ModalFooter";
+import { useModal } from "../context/UseModal";
 
 const modalRoot = document.getElementById("modal-root")!;
 
 interface IProps {
-  isOpen: boolean;
-  onClose: () => void;
   children: ReactNode;
 }
 
@@ -21,12 +21,9 @@ interface ICompProps {
   Footer: FC<{ children: ReactNode }>;
 }
 
-export const Modal: FC<IProps> & ICompProps = ({
-  isOpen,
-  onClose,
-  children,
-}) => {
+export const Modal: FC<IProps> & ICompProps = ({ children }) => {
   const { theme } = useTheme();
+  const { isOpen } = useModal();
   if (!isOpen) return null;
 
   function handleClick() {
@@ -34,6 +31,11 @@ export const Modal: FC<IProps> & ICompProps = ({
   }
 
   return createPortal(
+<<<<<<< HEAD:src/shared/ui/Modal/ui/Modal.tsx
+    <div className={`${styles.modalStyles} ${styles[theme]}`}>
+      <div className={`${styles.modalContentStyles} ${styles[theme]}`}>
+        {children}
+=======
 
     <ModalContext.Provider value={{ onClose }}>
       <div className={`${styles.modalStyles} ${styles[theme]}`}>
@@ -41,8 +43,9 @@ export const Modal: FC<IProps> & ICompProps = ({
           {children}
         </div>
 
+>>>>>>> 3ca15e2bdb583ee1417aae1dad4ab9692f76414a:src/shared/ui/Modal/Modal.tsx
       </div>
-    </ModalContext.Provider>,
+    </div>,
     modalRoot
   );
 };

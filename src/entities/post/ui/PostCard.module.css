@@ -1,13 +1,47 @@
 .section {
-  padding: 0 10px 10px;
-  border: 1px solid rgb(87, 87, 87);
+  padding: 0 20px 10px;
+  border: 1px solid rgb(195, 195, 195);
   border-radius: 10px;
   justify-items: left;
   box-sizing: border-box;
 }
 
+.section a {
+  width: fit-content;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.section a:visited,
+.section a {
+  color: black;
+}
+
+.section a:hover {
+  color: #797979;
+}
+.section a:active {
+  color: #363636;
+}
+
 .section h2 {
   padding: 0px;
+  justify-items: left;
+  width: fit-content;
+}
+
+.section div {
+  text-align: justify;
+  margin-bottom: 10px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+  -line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .section.dark {
@@ -18,4 +52,16 @@
   color: white;
   background-color: #4d4d4d;
   border: none;
+}
+
+.section.dark a,
+.section.dark a:visited {
+  color: white;
+}
+
+.section.dark a:hover {
+  color: rgb(199, 199, 199);
+}
+.section.dark a:active {
+  color: rgb(153, 153, 153);
 }

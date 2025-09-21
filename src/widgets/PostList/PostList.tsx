@@ -21,7 +21,7 @@ export const PostList: FC<Props> = ({ posts }) => {
     () =>
       posts.map((post) => (
         <React.Fragment key={post.id}>
-          <PostCard id={post.id} title={post.title} content={post.content} />
+          <PostCard post={post} />
         </React.Fragment>
       )),
     [posts]

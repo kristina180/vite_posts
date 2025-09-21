@@ -1,0 +1,8 @@
+.section {
+  padding: 10px;
+  border: 1px solid rgb(195, 195, 195);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}

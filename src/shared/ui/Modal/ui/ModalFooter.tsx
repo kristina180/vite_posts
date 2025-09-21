@@ -1,6 +1,6 @@
 import { useContext, type ReactNode } from "react";
 import styles from "./Modal.module.css";
-import { ModalContext } from "./ModalContext";
+import { ModalContext } from "../context/ModalContext";
 
 export const ModalFooter = ({ children }: { children: ReactNode }) => {
   const context = useContext(ModalContext);
