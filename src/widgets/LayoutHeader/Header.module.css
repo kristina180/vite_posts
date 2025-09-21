@@ -1,3 +1,4 @@
+
 .section {
   padding: 1rem;
 
@@ -15,4 +16,5 @@
 .section.dark {
   background-color: #4d4d4d;
   color: white;
+
 }

@@ -1,14 +1,17 @@
 import "./App.css";
 import { MainLayout } from "../shared/layouts/MainLayout";
+
 import { ThemeProvider } from "../shared/lib/theme/ThemeProvider";
-import { useState } from "react";
+import { useState, type FC } from "react";
 import { MOCK_POSTS } from "../shared/mocks/constants";
 import { PostListWithLoading } from "../widgets/PostListWithLoading/PostListWithLoading";
 import { PostLengthFilter } from "../features/PostLengthFilter/ui/PostLengthFilter";
 import type { IPost } from "../widgets/PostList/PostList";
 
+
 const App = () => {
   const [filteredPosts, setFilterPosts] = useState<IPost[]>(MOCK_POSTS);
+
 
   return (
     <ThemeProvider>
@@ -21,6 +24,7 @@ const App = () => {
         )}
       </MainLayout>
     </ThemeProvider>
+
   );
 };
 

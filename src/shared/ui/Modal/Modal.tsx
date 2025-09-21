@@ -29,12 +29,18 @@ export const Modal: FC<IProps> & ICompProps = ({
   const { theme } = useTheme();
   if (!isOpen) return null;
 
+  function handleClick() {
+    onClose();
+  }
+
   return createPortal(
+
     <ModalContext.Provider value={{ onClose }}>
       <div className={`${styles.modalStyles} ${styles[theme]}`}>
         <div className={`${styles.modalContentStyles} ${styles[theme]}`}>
           {children}
         </div>
+
       </div>
     </ModalContext.Provider>,
     modalRoot

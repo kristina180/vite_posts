@@ -1,10 +1,12 @@
+
 import styles from "./Footer.module.css";
 import type { FC } from "react";
 import { Button } from "../../shared/ui/Button/Button";
+import { type Theme } from "../../shared/lib/theme/ThemeContext";
 
 interface IProps {
   onOpenModal: () => void;
-  theme: "light" | "dark";
+  theme: Theme;
 }
 
 export const Footer: FC<IProps> = ({ onOpenModal, theme }) => {
@@ -15,4 +17,5 @@ export const Footer: FC<IProps> = ({ onOpenModal, theme }) => {
       </Button>
     </footer>
   );
+
 };
