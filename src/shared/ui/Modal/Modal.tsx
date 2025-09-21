@@ -1,16 +1,31 @@
 import { createPortal } from "react-dom";
-import type { FC } from "react";
+import { type FC, type ReactNode } from "react";
 import styles from "./Modal.module.css";
 import { useTheme } from "../../lib/theme/UseTheme";
+import { ModalContext } from "./ModalContext";
+import { ModalHeader } from "./ModalHeader";
+import { ModalBody } from "./ModalBody";
+import { ModalFooter } from "./ModalFooter";
 
 const modalRoot = document.getElementById("modal-root")!;
 
 interface IProps {
   isOpen: boolean;
   onClose: () => void;
+  children: ReactNode;
 }
 
-export const Modal: FC<IProps> = ({ isOpen, onClose }) => {
+interface ICompProps {
+  Header: FC<{ children: ReactNode }>;
+  Body: FC<{ children: ReactNode }>;
+  Footer: FC<{ children: ReactNode }>;
+}
+
+export const Modal: FC<IProps> & ICompProps = ({
+  isOpen,
+  onClose,
+  children,
+}) => {
   const { theme } = useTheme();
   if (!isOpen) return null;
 
@@ -19,13 +34,19 @@ export const Modal: FC<IProps> = ({ isOpen, onClose }) => {
   }
 
   return createPortal(
-    <div className={`${styles.modalStyles} ${styles[theme]}`}>
-      <div className={`${styles.modalContentStyles} ${styles[theme]}`}>
-        <h2>О проекте</h2>
-        <p>Это веб-сервис с постами</p>
-        <button onClick={handleClick}>Close</button>
+
+    <ModalContext.Provider value={{ onClose }}>
+      <div className={`${styles.modalStyles} ${styles[theme]}`}>
+        <div className={`${styles.modalContentStyles} ${styles[theme]}`}>
+          {children}
+        </div>
+
       </div>
-    </div>,
+    </ModalContext.Provider>,
     modalRoot
   );
 };
+
+Modal.Header = ModalHeader;
+Modal.Body = ModalBody;
+Modal.Footer = ModalFooter;

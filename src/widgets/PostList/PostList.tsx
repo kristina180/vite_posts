@@ -1,27 +1,30 @@
 
-import React from "react";
+import React, { useMemo } from "react";
 import { PostCard } from "../../entities/post/ui/PostCard";
 import type { FC } from "react";
 
+import styles from "./PostList.module.css";
 
-interface Post {
+export interface IPost {
+
   id: number;
   title: string;
   content: string;
 }
 
 interface Props {
-  posts: Post[];
+  posts: IPost[];
 }
 
 export const PostList: FC<Props> = ({ posts }) => {
-  return (
-    <section>
-      {posts.map((post) => (
+  const value = useMemo(
+    () =>
+      posts.map((post) => (
         <React.Fragment key={post.id}>
-          <PostCard key={post.id} title={post.title} content={post.content} />
+          <PostCard id={post.id} title={post.title} content={post.content} />
         </React.Fragment>
-      ))}
-    </section>
+      )),
+    [posts]
   );
+  return <section className={styles.section}>{value}</section>;
 };

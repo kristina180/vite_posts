@@ -1,0 +1,21 @@
+.section {
+  padding: 0 10px 10px;
+  border: 1px solid rgb(87, 87, 87);
+  border-radius: 10px;
+  justify-items: left;
+  box-sizing: border-box;
+}
+
+.section h2 {
+  padding: 0px;
+}
+
+.section.dark {
+  border: 1px solid rgb(195, 195, 195);
+}
+
+.section.dark button {
+  color: white;
+  background-color: #4d4d4d;
+  border: none;
+}

@@ -1,0 +1,25 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.section button {
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid rgb(195, 195, 195);
+}
+
+.section button:hover {
+  cursor: pointer;
+}
+
+.commentList {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+}
+.commentList li {
+  margin-bottom: 4px;
+}
