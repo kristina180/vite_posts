@@ -1,6 +1,6 @@
-import type { IPost } from "../../widgets/PostList/PostList";
+// import type { IPost } from "../../widgets/PostList/PostList";
 
-export const MOCK_POSTS: IPost[] = [
+export const MOCK_POSTS = [
   {
     id: 1,
     title: "CSS",
@@ -132,3 +132,6 @@ export const MOCK_ALBUMS = [
     ],
   },
 ];
+
+export const photoError =
+  "https://shkola6barnaul-r22.gosweb.gosuslugi.ru/netcat_files/8/168/U0WAp4LnwgM_30.jpg";

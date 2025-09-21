@@ -1,6 +1,8 @@
 import { filterByLength } from "../lib/filterByLength";
-import type { IPost } from "../../../widgets/PostList/PostList";
+
+import type { IPost } from "../../../entities/posts/api/postsApi";
 import React, { useState, type FC } from "react";
+
 import styles from "./PostLengthFilter.module.css";
 import { useTheme } from "../../../shared/lib/theme/UseTheme";
 

@@ -7,12 +7,12 @@ import styles from "./UserPosts.module.css";
 
 export const UserPosts = () => {
   const userData = useOutletContext<IUser>();
-  const { filteredPostsById } = usePosts(userData.posts_id);
+  const { posts } = usePosts(userData.id);
 
   return (
     <div className={styles.section}>
-      {filteredPostsById.map((elem) => (
-        <PostCard post={elem} />
+      {posts.map((elem) => (
+        <PostCard key={elem.id} post={elem} />
       ))}
     </div>
   );
