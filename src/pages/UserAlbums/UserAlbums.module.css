@@ -4,9 +4,12 @@
   padding: 10px;
   text-align: left;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 
-.section:hover {
+.section > :hover {
   background-color: rgb(244, 244, 244);
 }
 

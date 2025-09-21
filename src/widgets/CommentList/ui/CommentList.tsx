@@ -1,13 +1,7 @@
 import { useState, useCallback, type FC } from "react";
+import { type IComment } from "../../../entities/comments/api/commentsApi";
 import styles from "./CommentList.module.css";
 import { Comment } from "../../Comment/Comment";
-
-export interface IComment {
-  id: number;
-  userId: number;
-  text: string;
-  postId: number;
-}
 
 interface Props {
   comments: IComment[];
@@ -26,13 +20,16 @@ export const CommentList: FC<Props> = ({ comments }) => {
         {isOpen ? "Скрыть комментарии" : "Показать комментарии"}
       </button>
 
-      {isOpen && (
-        <ul className={styles.commentList}>
-          {comments.map((comment) => (
-            <Comment comment={comment} />
-          ))}
-        </ul>
-      )}
+      {isOpen &&
+        (comments ? (
+          <ul className={styles.commentList}>
+            {comments.map((comment) => (
+              <Comment key={comment.id} comment={comment} />
+            ))}
+          </ul>
+        ) : (
+          <div>Нет комментариев</div>
+        ))}
     </section>
   );
 };
