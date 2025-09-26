@@ -1,7 +1,8 @@
 import { useState, useCallback, type FC } from "react";
-import { type IComment } from "../../../entities/comments/api/commentsApi";
+import type { IComment } from "../../../entities/comments/model/types";
 import styles from "./CommentList.module.css";
 import { Comment } from "../../Comment/Comment";
+import { ItemList } from "../../../shared/ui/ItemList/ItemList";
 
 interface Props {
   comments: IComment[];
@@ -23,9 +24,13 @@ export const CommentList: FC<Props> = ({ comments }) => {
       {isOpen &&
         (comments ? (
           <ul className={styles.commentList}>
-            {comments.map((comment) => (
-              <Comment key={comment.id} comment={comment} />
-            ))}
+            <ItemList
+              items={comments}
+              keyExtractor={(comment) => comment.id}
+              renderItem={(comment) => (
+                <Comment key={comment.id} comment={comment} />
+              )}
+            />
           </ul>
         ) : (
           <div>Нет комментариев</div>
