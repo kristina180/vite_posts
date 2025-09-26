@@ -50,7 +50,7 @@
   margin-bottom: 20px;
 }
 
-.icon {
+/* .icon {
   margin-right: 10px;
   color: black;
 }
@@ -61,4 +61,10 @@
 
 .icon:active {
   color: #3b3b3b;
+} */
+
+.return {
+  color: black !important;
+  margin-right: 20px;
+  text-decoration: none;
 }

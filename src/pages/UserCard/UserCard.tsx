@@ -1,4 +1,4 @@
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { UserTabs } from "../../widgets/UserTabs/UserTabs";
 import styles from "./UserCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,7 +6,7 @@ import type {
   AppDispatch,
   RootState,
 } from "../../app/providers/store/reduxStore";
-import { getUserById } from "../../entities/users/model/slice/userSlice";
+import { getUserById } from "../../entities/users/model/slice/getUserById";
 import { useEffect } from "react";
 
 const Photo =
@@ -14,6 +14,7 @@ const Photo =
 
 export const UserCard = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch<AppDispatch>();
   const {
@@ -21,6 +22,10 @@ export const UserCard = () => {
     error,
     isLoading: userLoading,
   } = useSelector((state: RootState) => state.user);
+
+  const handleReturn = () => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     if (id) {
@@ -33,22 +38,27 @@ export const UserCard = () => {
 
   return (
     <div className={styles.section}>
-      {user ? (
-        <>
-          <div className={styles.user_info}>
-            <div>
-              <img src={Photo} width={100} height={100}></img>
-              <div className={styles.name}>
-                <p>{user.name}</p>
+      <button onClick={handleReturn} className={styles.return}>
+        Назад
+      </button>
+      <>
+        {user ? (
+          <>
+            <div className={styles.user_info}>
+              <div>
+                <img src={Photo} width={100} height={100}></img>
+                <div className={styles.name}>
+                  <p>{user.name}</p>
+                </div>
               </div>
             </div>
-          </div>
-          <UserTabs />
-          <Outlet context={user} />
-        </>
-      ) : (
-        <div>User not found</div>
-      )}
+            <UserTabs />
+            <Outlet context={user} />
+          </>
+        ) : (
+          <div>User not found</div>
+        )}
+      </>
     </div>
   );
 };

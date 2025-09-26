@@ -22,16 +22,7 @@ export const albumsApi = createApi({
   endpoints: (builder) => ({
     getAlbums: builder.query<IAlbum[], void>({
       query: () => "albums",
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map((album) => ({
-                type: "Albums" as const,
-                id: album.id,
-              })),
-              { type: "Albums", id: "LIST" },
-            ]
-          : [{ type: "Albums", id: "LIST" }],
+      providesTags: [{ type: "Albums", id: "LIST" }],
     }),
 
     getAlbumById: builder.query<IAlbum, number>({

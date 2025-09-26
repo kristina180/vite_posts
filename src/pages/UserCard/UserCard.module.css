@@ -40,3 +40,9 @@ img {
 .name p {
   margin: 0;
 }
+
+.return {
+  margin-bottom: 10px;
+  align-self: left;
+  display: block;
+}

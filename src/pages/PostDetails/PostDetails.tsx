@@ -1,18 +1,17 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./PostDetails.module.css";
 import { useGetPostByIdQuery } from "../../entities/posts/api/postsApi";
 import { useEffect, type FC } from "react";
 import type { RootState } from "../../app/providers/store/reduxStore";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserById } from "../../entities/users/model/slice/userSlice";
+import { getUserById } from "../../entities/users/model/slice/getUserById";
 import { type AppDispatch } from "../../app/providers/store/reduxStore";
 import { CommentList } from "../../widgets/CommentList/ui/CommentList";
 import { useGetCommentsByIdPostQuery } from "../../entities/comments/api/commentsApi";
 
-import { ChevronLeft } from "lucide-react";
-
 export const PostDetails: FC = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const numericId = id ? Number(id) : undefined;
 
@@ -36,6 +35,10 @@ export const PostDetails: FC = () => {
     skip: !id,
   });
 
+  const handleReturn = () => {
+    navigate(-1);
+  };
+
   useEffect(() => {
     if (post?.userId) {
       dispatch(getUserById(post.userId));
@@ -48,9 +51,9 @@ export const PostDetails: FC = () => {
   return (
     <div className={styles.section}>
       <div className={styles.linkreturn}>
-        <Link to={"/"}>
-          <ChevronLeft size={18} className={styles.icon} />
-        </Link>
+        <button className={styles.return} onClick={handleReturn}>
+          Назад
+        </button>
 
         <div>
           <Link to={"/"}>Посты</Link>

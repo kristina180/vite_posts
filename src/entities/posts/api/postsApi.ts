@@ -15,16 +15,7 @@ export const postsApi = createApi({
   endpoints: (builder) => ({
     getPosts: builder.query<IPost[], void>({
       query: () => "posts",
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map((post) => ({
-                type: "Posts" as const,
-                id: post.id,
-              })),
-              { type: "Posts", id: "LIST" },
-            ]
-          : [{ type: "Posts", id: "LIST" }],
+      providesTags: [{ type: "Posts", id: "LIST" }],
     }),
 
     getPostById: builder.query<IPost, number>({
