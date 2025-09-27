@@ -8,3 +8,7 @@
 .section > * {
   width: 100%;
 }
+
+.postlist_item {
+  row-gap: 10px;
+}

@@ -1,21 +1,49 @@
 import { Link, useParams } from "react-router-dom";
-import { usePosts } from "../../features/PostList/model/hooks/usePost";
 import styles from "./PostDetails.module.css";
-import { MOCK_USERS, type IUser } from "../../shared/mocks/constants";
-import type { FC } from "react";
-import type { IPost } from "../../widgets/PostList/PostList";
+import { useGetPostByIdQuery } from "../../entities/posts/api/postsApi";
+import { useEffect, type FC } from "react";
+import type { RootState } from "../../app/providers/store/reduxStore";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById } from "../../entities/users/model/slice/userSlice";
+import { type AppDispatch } from "../../app/providers/store/reduxStore";
+import { CommentList } from "../../widgets/CommentList/ui/CommentList";
+import { useGetCommentsByIdPostQuery } from "../../entities/comments/api/commentsApi";
+
 import { ChevronLeft } from "lucide-react";
 
 export const PostDetails: FC = () => {
   const { id } = useParams();
-  const { filteredPostsById } = usePosts();
-  const current_post: IPost | undefined = id
-    ? filteredPostsById.find((post) => post.id == +id)
-    : undefined;
 
-  const current_user: IUser | undefined = MOCK_USERS.find((elem) =>
-    elem.posts_id.includes(Number(id))
-  );
+  const numericId = id ? Number(id) : undefined;
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const {
+    data: post,
+    isError,
+    isLoading,
+  } = useGetPostByIdQuery(numericId!, {
+    skip: !id,
+  });
+
+  const {
+    user,
+    error,
+    isLoading: userLoading,
+  } = useSelector((state: RootState) => state.user);
+
+  const { data: comments } = useGetCommentsByIdPostQuery(numericId!, {
+    skip: !id,
+  });
+
+  useEffect(() => {
+    if (post?.userId) {
+      dispatch(getUserById(post.userId));
+    }
+  }, [dispatch, post?.userId]);
+
+  if (isLoading || userLoading) return <p>Загрузка поста...</p>;
+  if (isError || error) return <p>Ошибка при загрузке поста</p>;
 
   return (
     <div className={styles.section}>
@@ -29,19 +57,21 @@ export const PostDetails: FC = () => {
         </div>
         <div>{"/"}</div>
         <div>
-          <Link to={`/posts/${id}`}>{current_post?.title}</Link>
+          <Link to={`/posts/${id}`}>{post?.title}</Link>
         </div>
       </div>
-      {current_post ? (
+      {post ? (
         <div className={styles.post_info}>
-          <h2>{current_post.title}</h2>
-          <div className={styles.author}>
-            Автор:{" "}
-            <Link to={`/users/${current_user?.id}`}>
-              {current_user?.name + " " + current_user?.surname}
-            </Link>
-          </div>
-          <div className={styles.content}>{current_post.content}</div>
+          <h2>{post.title}</h2>
+          {user ? (
+            <div className={styles.author}>
+              Автор: <Link to={`/users/${post.userId}`}>{user.name}</Link>
+            </div>
+          ) : (
+            <div></div>
+          )}
+          <div className={styles.content}>{post.body}</div>
+          <CommentList comments={comments ?? []} />
         </div>
       ) : (
         <div>Пост не найден</div>
